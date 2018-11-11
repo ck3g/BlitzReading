@@ -15,7 +15,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentScreen: 'welcome' };
+    this.state = { currentScreen: 'welcome', totalWords: 0 };
 
     this.onPressPractice = this.onPressPractice.bind(this);
     this.onPressNextWord = this.onPressNextWord.bind(this);
@@ -26,10 +26,16 @@ export default class App extends Component {
       this.setState({ currentScreen: 'results' })
     ), PRACTICE_TIME);
 
-    this.setState({ currentScreen: 'practice'});
+    this.setState({
+      currentScreen: 'practice',
+      totalWords: 0
+    });
   }
 
   onPressNextWord() {
+    this.setState({
+      totalWords: this.state.totalWords + 1
+    })
   }
 
   renderWelcomeScreen() {
@@ -60,7 +66,7 @@ export default class App extends Component {
     return (
       <View>
         <Text style={styles.welcome}>Results</Text>
-        <Text style={styles.results}>Words count: 0</Text>
+        <Text style={styles.results}>Words count: {this.state.totalWords}</Text>
         <Button
           onPress={this.onPressPractice}
           title="Practice Again"
