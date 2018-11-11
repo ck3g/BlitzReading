@@ -14,13 +14,27 @@ export default class App extends Component {
     super(props);
 
     this.state = { currentScreen: 'welcome' };
+
+    this.onPressPractice = this.onPressPractice.bind(this);
+    this.onPressNextWord = this.onPressNextWord.bind(this);
+  }
+
+  onPressPractice() {
+    this.setState({ currentScreen: 'practice' });
+  }
+
+  onPressNextWord() {
+    this.setState({ currentScreen: 'results' });
   }
 
   renderWelcomeScreen() {
     return (
       <View>
         <Text style={styles.welcome}>Welcome to Blitz Reading!</Text>
-        <Button title="Practice" />
+        <Button
+          onPress={this.onPressPractice}
+          title="Practice"
+        />
       </View>
     );
   }
@@ -29,7 +43,10 @@ export default class App extends Component {
     return (
       <View>
         <Text style={styles.word}>word</Text>
-        <Button title="Next Word" />
+        <Button
+          onPress={this.onPressNextWord}
+          title="Next Word"
+        />
       </View>
     );
   }
@@ -39,7 +56,10 @@ export default class App extends Component {
       <View>
         <Text style={styles.welcome}>Results</Text>
         <Text style={styles.results}>Words count: 0</Text>
-        <Button title="Practice Again" />
+        <Button
+          onPress={this.onPressPractice}
+          title="Practice Again"
+        />
       </View>
     );
   }
