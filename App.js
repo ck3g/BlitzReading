@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 
+const PRACTICE_TIME = 10 * 1000;
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -20,11 +22,14 @@ export default class App extends Component {
   }
 
   onPressPractice() {
-    this.setState({ currentScreen: 'practice' });
+    setTimeout(() => (
+      this.setState({ currentScreen: 'results' })
+    ), PRACTICE_TIME);
+
+    this.setState({ currentScreen: 'practice'});
   }
 
   onPressNextWord() {
-    this.setState({ currentScreen: 'results' });
   }
 
   renderWelcomeScreen() {
