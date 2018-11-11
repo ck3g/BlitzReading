@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import allWords from './src/words.en.json';
+import shuffle from './src/shuffle';
 
 const PRACTICE_TIME = 10 * 1000;
 
@@ -27,7 +28,7 @@ export default class App extends Component {
       this.setState({ currentScreen: 'results' })
     ), PRACTICE_TIME);
 
-    const words = [...allWords];
+    const words = shuffle(allWords);
     const currentWord = words.shift();
 
     this.setState({
