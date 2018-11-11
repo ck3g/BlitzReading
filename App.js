@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
+import allWords from './src/words.en.json';
 
 const PRACTICE_TIME = 10 * 1000;
 
@@ -26,15 +27,25 @@ export default class App extends Component {
       this.setState({ currentScreen: 'results' })
     ), PRACTICE_TIME);
 
+    const words = [...allWords];
+    const currentWord = words.shift();
+
     this.setState({
       currentScreen: 'practice',
+      currentWord,
+      words,
       totalWords: 0
     });
   }
 
   onPressNextWord() {
+    const { words, totalWords } = this.state;
+    const nextWord = words.shift()
+
     this.setState({
-      totalWords: this.state.totalWords + 1
+      currentWord: nextWord,
+      words,
+      totalWords: totalWords + 1
     })
   }
 
@@ -53,7 +64,7 @@ export default class App extends Component {
   renderPracticeScreen() {
     return (
       <View>
-        <Text style={styles.word}>word</Text>
+        <Text style={styles.word}>{this.state.currentWord}</Text>
         <Button
           onPress={this.onPressNextWord}
           title="Next Word"
