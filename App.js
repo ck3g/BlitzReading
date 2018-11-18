@@ -8,13 +8,14 @@
 
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import styles from './src/styles';
 import allWords from './src/words.en.json';
 import shuffle from './src/shuffle';
 
 const PRACTICE_TIME = 10 * 1000;
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -99,3 +100,9 @@ export default class App extends Component {
     );
   }
 }
+
+const AppNavigator = createSwitchNavigator({
+  App: App,
+});
+
+export default createAppContainer(AppNavigator);
