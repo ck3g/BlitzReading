@@ -6,8 +6,9 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Button, Text, View } from 'react-native';
+import styles from './src/styles';
 import allWords from './src/words.en.json';
 import shuffle from './src/shuffle';
 
@@ -98,27 +99,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  word: {
-    fontSize: 50,
-    textAlign: 'center',
-    margin: 10,
-  },
-  results: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 30,
-  },
-});
