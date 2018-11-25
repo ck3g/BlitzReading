@@ -3,6 +3,20 @@ import { Button, View, Text } from 'react-native';
 import styles from '../styles';
 
 export default class ResultsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      totalWords: 0
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      totalWords: this.props.navigation.getParam('totalWords', 0)
+    })
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -10,7 +24,7 @@ export default class ResultsScreen extends React.Component {
         <View>
           <Text style={styles.welcome}>Results</Text>
           <Text style={styles.results}>
-            Words count: {navigation.getParam('totalWords', 0)}
+            Words count: {this.state.totalWords}
           </Text>
           <Button
             onPress={() => navigation.navigate('Practice')}
