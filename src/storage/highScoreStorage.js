@@ -4,7 +4,7 @@ const STORAGE_KEY = 'HIGH_SCORES';
 
 const parseHighScores = (highScores) =>
   JSON.parse(highScores).map((highScore) => {
-    highScore.createdAt = new Date(Date.parse(highScore.createdAt))
+    highScore.createdAt = new Date(highScore.createdAt)
     return highScore;
   });
 

@@ -6,6 +6,7 @@ import {
   mergeHighScores,
   saveHighScores
 } from '../storage/highScoreStorage';
+import HighScores from '../components/HighScores';
 
 export default class ResultsScreen extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ export default class ResultsScreen extends React.Component {
           <Text style={styles.results}>
             Words count: {this.state.totalWords}
           </Text>
+          <HighScores data={this.state.highScores} />
           <Button
             onPress={() => navigation.navigate('Practice')}
             title="Practice Again"
