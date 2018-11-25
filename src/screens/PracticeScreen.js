@@ -5,7 +5,7 @@ import styles from '../styles';
 import allWords from '../words.en.json';
 import shuffle from '../shuffle';
 
-const PRACTICE_TIME = 10 * 1000;
+const PRACTICE_TIME = 5 * 1000;
 
 export default class PracticeScreen extends React.Component {
   constructor(props) {

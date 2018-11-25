@@ -21,5 +21,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 30,
+    fontSize: 20
   },
 });
