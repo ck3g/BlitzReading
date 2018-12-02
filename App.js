@@ -48,6 +48,12 @@ const AppNavigator = createBottomTabNavigator(
           <Icon name="cogs" size={25} color={tintColor} />
       }
     }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'orange',
+      inactiveTintColor: 'gray'
+    }
   }
 );
 
