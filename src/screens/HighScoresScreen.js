@@ -25,7 +25,7 @@ export default class HighScoresScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HighScores data={this.state.highScores} />
+        <HighScores data={this.state.highScores} totalNumber={25} />
       </View>
     );
   }
