@@ -4,6 +4,7 @@ import {
   createBottomTabNavigator,
   createAppContainer
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
@@ -23,10 +24,31 @@ const HomeNavigator = createSwitchNavigator({
   Results: ResultsScreen
 });
 
-const AppNavigator = createBottomTabNavigator({
-  Home: HomeNavigator,
-  HighScores: HighScoresScreen,
-  Settings: SettingsScreen
-});
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: HomeNavigator,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) =>
+          <Icon name="home" size={25} color={tintColor} />
+      }
+    },
+    HighScores: {
+      screen: HighScoresScreen,
+      navigationOptions: {
+        tabBarLabel: 'High Scores',
+        tabBarIcon: ({tintColor}) =>
+          <Icon name="chart-bar" size={25} color={tintColor} />
+      }
+    },
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) =>
+          <Icon name="cogs" size={25} color={tintColor} />
+      }
+    }
+  }
+);
 
 export default createAppContainer(AppNavigator);
