@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 
 const DEFAULT_TOTAL_NUMBER = 10;
 
@@ -35,12 +35,14 @@ export default HighScores = ({ data, totalNumber }) => {
     <View style={styles.container}>
       <Text style={styles.header}>High Scores</Text>
       <TableHeader />
-      <ScrollView>
-        {
-          highScores.map((highScore, index) =>
-            <Row highScore={highScore} index={index} key={index} />)
+      <FlatList
+        data={highScores}
+        renderItem={
+          ({ item, index }) =>
+            <Row highScore={item} index={index} key={index} />
         }
-      </ScrollView>
+        keyExtractor={(item, index) => index.toString()}
+      />
     </View>
   );
 };
