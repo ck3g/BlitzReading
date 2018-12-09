@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 
 const DEFAULT_TOTAL_NUMBER = 10;
 
@@ -34,11 +34,20 @@ export default HighScores = ({ data, totalNumber }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>High Scores</Text>
-      <TableHeader />
-      {
-        highScores.map((highScore, index) =>
-          <Row highScore={highScore} index={index} key={index} />)
-      }
+      <FlatList
+        data={highScores}
+        renderItem={
+          ({ item, index }) =>
+            <Row highScore={item} index={index} key={index} />
+        }
+        keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={() =>
+          <Text style={{ textAlign: 'center' }}>
+            There are no High Scores yet!
+          </Text>
+        }
+        ListHeaderComponent={() => highScores.length > 0 && <TableHeader />}
+      />
     </View>
   );
 };
@@ -46,7 +55,8 @@ export default HighScores = ({ data, totalNumber }) => {
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    marginBottom: 15
+    marginBottom: 15,
+    marginTop: 50
   },
   header: {
     textAlign: 'center',
