@@ -34,7 +34,7 @@ export default HighScores = ({ data, totalNumber }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>High Scores</Text>
-      <TableHeader />
+      {highScores.length > 0 && <TableHeader />}
       <FlatList
         data={highScores}
         renderItem={
@@ -42,6 +42,11 @@ export default HighScores = ({ data, totalNumber }) => {
             <Row highScore={item} index={index} key={index} />
         }
         keyExtractor={(item, index) => index.toString()}
+        ListEmptyComponent={() =>
+          <Text style={{ textAlign: 'center' }}>
+            There are no High Scores yet!
+          </Text>
+        }
       />
     </View>
   );
