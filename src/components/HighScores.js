@@ -34,7 +34,6 @@ export default HighScores = ({ data, totalNumber }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>High Scores</Text>
-      {highScores.length > 0 && <TableHeader />}
       <FlatList
         data={highScores}
         renderItem={
@@ -47,6 +46,7 @@ export default HighScores = ({ data, totalNumber }) => {
             There are no High Scores yet!
           </Text>
         }
+        ListHeaderComponent={() => highScores.length > 0 && <TableHeader />}
       />
     </View>
   );
