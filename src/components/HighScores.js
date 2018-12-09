@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 const DEFAULT_TOTAL_NUMBER = 10;
 
@@ -35,10 +35,12 @@ export default HighScores = ({ data, totalNumber }) => {
     <View style={styles.container}>
       <Text style={styles.header}>High Scores</Text>
       <TableHeader />
-      {
-        highScores.map((highScore, index) =>
-          <Row highScore={highScore} index={index} key={index} />)
-      }
+      <ScrollView>
+        {
+          highScores.map((highScore, index) =>
+            <Row highScore={highScore} index={index} key={index} />)
+        }
+      </ScrollView>
     </View>
   );
 };
@@ -46,7 +48,8 @@ export default HighScores = ({ data, totalNumber }) => {
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    marginBottom: 15
+    marginBottom: 15,
+    marginTop: 50
   },
   header: {
     textAlign: 'center',
