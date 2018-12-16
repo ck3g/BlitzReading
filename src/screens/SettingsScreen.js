@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   TextInput,
+  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -24,6 +25,13 @@ export default class HighScoresScreen extends React.Component {
               maxLength={20}
               onBlur={Keyboard.dismiss}
             />
+          </View>
+          <View style={styles.inputContainer}>
+            <TouchableOpacity
+              style={styles.saveButton}
+            >
+              <Text style={styles.saveButtonText}>Save</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   inputContainer: {
-    paddingTop: 10
+    paddingTop: 15
   },
   textInput: {
     borderColor: '#CCCCCC',
@@ -54,5 +62,17 @@ const styles = StyleSheet.create({
     fontSize: 25,
     paddingLeft: 20,
     paddingRight: 20
+  },
+  saveButton: {
+    borderWidth: 1,
+    borderColor: '#007BFF',
+    backgroundColor: '#007BFF',
+    padding: 15,
+    margin: 5
+  },
+  saveButtonText: {
+    color: '#FFFFFF',
+    fontSize: 20,
+    textAlign: 'center'
   }
 });
