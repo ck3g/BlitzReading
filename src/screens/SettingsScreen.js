@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, ScrollView, Text, TextInput, View } from 'react-native';
+import {
+  Button,
+  Keyboard,
+  StyleSheet,
+  ScrollView,
+  Text,
+  TextInput,
+  View
+} from 'react-native';
 
 export default class HighScoresScreen extends React.Component {
   render() {
@@ -14,6 +22,7 @@ export default class HighScoresScreen extends React.Component {
               style={styles.textInput}
               placeholder="Your name"
               maxLength={20}
+              onBlur={Keyboard.dismiss}
             />
           </View>
         </ScrollView>
