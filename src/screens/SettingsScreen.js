@@ -9,8 +9,32 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { loadSettings, saveSettings } from '../storage/settingsStorage';
 
 export default class HighScoresScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { name: '' }
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async componentDidMount() {
+    const initialState = await loadSettings();
+
+    this.setState(initialState);
+  }
+
+  handleNameChange(name) {
+    this.setState({ name });
+  }
+
+  handleSubmit() {
+    saveSettings(this.state);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -24,11 +48,14 @@ export default class HighScoresScreen extends React.Component {
               placeholder="Your name"
               maxLength={20}
               onBlur={Keyboard.dismiss}
+              value={this.state.name}
+              onChangeText={this.handleNameChange}
             />
           </View>
           <View style={styles.inputContainer}>
             <TouchableOpacity
               style={styles.saveButton}
+              onPress={this.handleSubmit}
             >
               <Text style={styles.saveButtonText}>Save</Text>
             </TouchableOpacity>
