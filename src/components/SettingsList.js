@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import SettingsListItem from './SettingsListItem';
+
 const settings = [
   {
     name: 'Display language'
@@ -16,7 +18,10 @@ class SettingsList extends React.Component {
       <View>
         {
           settings.map((item) => (
-            <Text key={item.name}>{item.name}</Text>
+            <SettingsListItem
+              key={item.name}
+              title={item.name}
+            />
           ))
         }
       </View>
