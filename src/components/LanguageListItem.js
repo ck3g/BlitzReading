@@ -1,11 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class LanguageListItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleLocaleChange = this.handleLocaleChange.bind(this);
+  }
+
+  handleLocaleChange() {
+    Alert.alert(
+      'Change language?',
+      null,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Change',
+          onPress: () => this.props.onChangeLocale(this.props.locale),
+          style: 'destructive'
+        }
+      ]
+    )
+  }
+
   render() {
     return (
-      <View style={styles.listItem}>
+      <TouchableOpacity
+        style={styles.listItem}
+        onPress={this.handleLocaleChange}
+      >
         <View style={styles.textWrapper}>
           <Text style={[
             styles.title, (this.props.isActive && styles.active)
@@ -25,7 +49,7 @@ class LanguageListItem extends React.Component {
               size={30}
             />
         }
-      </View>
+      </TouchableOpacity>
     );
   }
 }

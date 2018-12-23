@@ -21,15 +21,20 @@ class LanguageSelectorScreen extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const currentLocale = navigation.getParam('currentLocale');
+
     return (
       <View style={{ marginTop: 15 }}>
         {
           languages.map((language) => (
             <LanguageListItem
               key={language.locale}
-              isActive={language.locale === 'de'}
+              isActive={language.locale === currentLocale}
+              locale={language.locale}
               name={language.name}
               englishName={language.englishName}
+              onChangeLocale={(locale) => navigation.navigate('Settings', { locale })}
             />
           ))
         }
