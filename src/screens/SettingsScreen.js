@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { loadSettings, saveSettings } from '../storage/settingsStorage';
 
+import SettingsList from '../components/SettingsList';
+
 export default class HighScoresScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -53,6 +55,9 @@ export default class HighScoresScreen extends React.Component {
             />
           </View>
           <View style={styles.inputContainer}>
+            <SettingsList />
+          </View>
+          <View style={styles.inputContainer}>
             <TouchableOpacity
               style={styles.saveButton}
               onPress={this.handleSubmit}
@@ -70,7 +75,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 45,
-    backgroundColor: '#F5FCFF',
   },
   header: {
     fontSize: 25,
