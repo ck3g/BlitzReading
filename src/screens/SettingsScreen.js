@@ -26,6 +26,10 @@ class SettingsScreen extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static navigationOptions = {
+    title: 'Settings'
+  };
+
   async componentDidMount() {
     const initialState = await loadSettings();
 
@@ -43,9 +47,6 @@ class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text style={styles.header}>Settings</Text>
-        </View>
         <ScrollView>
           <View style={styles.inputContainer}>
             <TextInput
@@ -86,12 +87,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 45,
-  },
-  header: {
-    fontSize: 25,
-    textAlign: 'center',
-    margin: 10,
-    fontWeight: 'bold'
   },
   inputContainer: {
     paddingTop: 15
