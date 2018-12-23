@@ -9,22 +9,38 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { loadSettings, saveSettings } from '../storage/settingsStorage';
+import { createStackNavigator } from 'react-navigation';
 
-export default class HighScoresScreen extends React.Component {
+import LanguageSelectorScreen from './LanguageSelectorScreen';
+import AboutScreen from './AboutScreen';
+import { loadSettings, saveSettings } from '../storage/settingsStorage';
+import SettingsList from '../components/SettingsList';
+
+class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: '' }
+    this.state = { name: '', locale: 'en' }
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static navigationOptions = {
+    title: 'Settings'
+  };
+
   async componentDidMount() {
     const initialState = await loadSettings();
 
     this.setState(initialState);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const locale = this.props.navigation.getParam('locale', null);
+    if (locale && prevState.locale !== locale) {
+      this.setState({ locale });
+    }
   }
 
   handleNameChange(name) {
@@ -36,11 +52,11 @@ export default class HighScoresScreen extends React.Component {
   }
 
   render() {
+    const currentLocale = this.state.locale;
+    const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
-        <View>
-          <Text style={styles.header}>Settings</Text>
-        </View>
         <ScrollView>
           <View style={styles.inputContainer}>
             <TextInput
@@ -50,6 +66,11 @@ export default class HighScoresScreen extends React.Component {
               onBlur={Keyboard.dismiss}
               value={this.state.name}
               onChangeText={this.handleNameChange}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <SettingsList
+              onPressItem={(screen) => navigation.navigate(screen, { currentLocale })}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -66,17 +87,16 @@ export default class HighScoresScreen extends React.Component {
   }
 }
 
+const SettingsNavigator = createStackNavigator({
+  Settings: SettingsScreen,
+  LanguageSelector: LanguageSelectorScreen,
+  About: AboutScreen
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 45,
-    backgroundColor: '#F5FCFF',
-  },
-  header: {
-    fontSize: 25,
-    textAlign: 'center',
-    margin: 10,
-    fontWeight: 'bold'
   },
   inputContainer: {
     paddingTop: 15
@@ -103,3 +123,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+export default SettingsNavigator;
