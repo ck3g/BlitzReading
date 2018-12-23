@@ -5,10 +5,12 @@ import SettingsListItem from './SettingsListItem';
 
 const settings = [
   {
-    name: 'Display language'
+    name: 'Display language',
+    screen: 'LanguageSelector'
   },
   {
-    name: 'About'
+    name: 'About',
+    screen: 'About'
   }
 ];
 
@@ -21,6 +23,7 @@ class SettingsList extends React.Component {
             <SettingsListItem
               key={item.name}
               title={item.name}
+              onPress={() => this.props.onPressItem(item.screen)}
             />
           ))
         }

@@ -9,11 +9,14 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { loadSettings, saveSettings } from '../storage/settingsStorage';
+import { createStackNavigator } from 'react-navigation';
 
+import LanguageSelectorScreen from './LanguageSelectorScreen';
+import AboutScreen from './AboutScreen';
+import { loadSettings, saveSettings } from '../storage/settingsStorage';
 import SettingsList from '../components/SettingsList';
 
-export default class HighScoresScreen extends React.Component {
+class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -55,7 +58,9 @@ export default class HighScoresScreen extends React.Component {
             />
           </View>
           <View style={styles.inputContainer}>
-            <SettingsList />
+            <SettingsList
+              onPressItem={(screen) => this.props.navigation.navigate(screen)}
+            />
           </View>
           <View style={styles.inputContainer}>
             <TouchableOpacity
@@ -70,6 +75,12 @@ export default class HighScoresScreen extends React.Component {
     );
   }
 }
+
+const SettingsNavigator = createStackNavigator({
+  Settings: SettingsScreen,
+  LanguageSelector: LanguageSelectorScreen,
+  About: AboutScreen
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -107,3 +118,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+export default SettingsNavigator;
