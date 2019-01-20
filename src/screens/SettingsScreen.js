@@ -10,6 +10,7 @@ import {
   View
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import i18n from '../i18n';
 
 import LanguageSelectorScreen from './LanguageSelectorScreen';
 import AboutScreen from './AboutScreen';
@@ -39,6 +40,7 @@ class SettingsScreen extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const locale = this.props.navigation.getParam('locale', null);
     if (locale && prevState.locale !== locale) {
+      i18n.locale = locale;
       this.setState({ locale });
     }
   }

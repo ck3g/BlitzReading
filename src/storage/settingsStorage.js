@@ -3,7 +3,8 @@ import { AsyncStorage } from 'react-native';
 const STORAGE_KEY = 'SETTINGS';
 
 const DEFAULT_SETTINGS = {
-  name: ''
+  name: '',
+  locale: 'en'
 };
 
 export const loadSettings = async () => {
