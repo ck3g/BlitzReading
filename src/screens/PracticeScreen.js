@@ -4,8 +4,8 @@ import styles from '../styles';
 
 import i18n from '../i18n';
 
-import enWords from '../words.en.json';
-import deWords from '../words.de.json';
+import enWords from '../locales/words.en.json';
+import deWords from '../locales/words.de.json';
 import shuffle from '../shuffle';
 
 const PRACTICE_TIME = 5 * 1000;
