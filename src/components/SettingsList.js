@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import i18n from '../i18n';
 
 import SettingsListItem from './SettingsListItem';
 
 const settings = [
   {
-    name: 'Display language',
+    name: i18n.t('settings.display_language'),
     screen: 'LanguageSelector'
   },
   {
-    name: 'About',
+    name: i18n.t('settings.about'),
     screen: 'About'
   }
 ];

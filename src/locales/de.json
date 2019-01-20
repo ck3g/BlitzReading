@@ -8,5 +8,27 @@
   "home": {
     "welcome": "Willkommen im %{appName}!",
     "start_practice": "Trainieren"
+  },
+  "practice": {
+    "next_word": "Weiter"
+  },
+  "results": {
+    "title": "Ergebnisse",
+    "words_count": "Wörter",
+    "practice_again": "Nochmal üben"
+  },
+  "high_scores": {
+    "title": "Highscores"
+  },
+  "settings": {
+    "display_language": "Sprache",
+    "about": "Über uns",
+    "save_button": "Speichern",
+    "name_placeholder": "Deine Name"
+  },
+  "language_list": {
+    "change_language": "Sprache ändern?",
+    "ok": "Ändern",
+    "cancel": "Stornieren"
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import i18n from '../i18n';
 
 import LanguageListItem from '../components/LanguageListItem';
 
@@ -17,7 +18,7 @@ const languages = [
 
 class LanguageSelectorScreen extends React.Component {
   static navigationOptions = {
-    title: 'Language'
+    title: i18n.t('settings.display_language')
   };
 
   render() {

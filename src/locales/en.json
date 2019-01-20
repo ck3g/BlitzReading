@@ -8,5 +8,27 @@
   "home": {
     "welcome": "Welcome to %{appName}!",
     "start_practice": "Practice"
+  },
+  "practice": {
+    "next_word": "Next"
+  },
+  "results": {
+    "title": "Results",
+    "words_count": "Words count",
+    "practice_agagin": "Practice again"
+  },
+  "high_scores": {
+    "title": "High Scores"
+  },
+  "settings": {
+    "display_language": "Display language",
+    "about": "About",
+    "save_button": "Save",
+    "name_placeholder": "Your name"
+  },
+  "language_list": {
+    "change_language": "Change language?",
+    "ok": "Change",
+    "cancel": "Cancel"
   }
 }

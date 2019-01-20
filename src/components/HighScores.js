@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
+import i18n from '../i18n';
 
 const DEFAULT_TOTAL_NUMBER = 10;
 
@@ -33,7 +34,9 @@ export default HighScores = ({ data, totalNumber }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>High Scores</Text>
+      <Text style={styles.header}>
+        {i18n.t('high_scores.title')}
+      </Text>
       <FlatList
         data={highScores}
         renderItem={

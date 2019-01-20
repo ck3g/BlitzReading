@@ -56,7 +56,7 @@ export default class PracticeScreen extends React.Component {
           <Text style={styles.word}>{this.state.currentWord}</Text>
           <Button
             onPress={this.onPressNextWord}
-            title="Next Word"
+            title={i18n.t("practice.next_word")}
           />
         </View>
       </View>

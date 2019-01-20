@@ -28,7 +28,7 @@ class SettingsScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Settings'
+    title: i18n.t('navigation.settings')
   };
 
   async componentDidMount() {
@@ -63,7 +63,7 @@ class SettingsScreen extends React.Component {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}
-              placeholder="Your name"
+              placeholder={i18n.t('settings.name_placeholder')}
               maxLength={20}
               onBlur={Keyboard.dismiss}
               value={this.state.name}
@@ -80,7 +80,9 @@ class SettingsScreen extends React.Component {
               style={styles.saveButton}
               onPress={this.handleSubmit}
             >
-              <Text style={styles.saveButtonText}>Save</Text>
+              <Text style={styles.saveButtonText}>
+                {i18n.t('settings.save_button')}
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
