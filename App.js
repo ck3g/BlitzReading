@@ -1,10 +1,13 @@
 import React from 'react';
+import { Text } from 'react-native';
 import {
   createSwitchNavigator,
   createBottomTabNavigator,
   createAppContainer
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import i18n from './src/i18n';
 
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
@@ -24,6 +27,11 @@ const AppNavigator = createBottomTabNavigator(
     Home: {
       screen: HomeNavigator,
       navigationOptions: {
+        tabBarLabel: ({ tintColor }) => (
+          <Text style={{ fontSize: 10, color: tintColor }}>
+            {i18n.t('navigation.home')}
+          </Text>
+        ),
         tabBarIcon: ({ horizontal, tintColor }) =>
           <Icon name="home" size={horizontal ? 20 : 25} color={tintColor} />
       }
@@ -31,7 +39,11 @@ const AppNavigator = createBottomTabNavigator(
     HighScores: {
       screen: HighScoresScreen,
       navigationOptions: {
-        tabBarLabel: 'High Scores',
+        tabBarLabel: ({ tintColor }) => (
+          <Text style={{ fontSize: 10, color: tintColor }}>
+            {i18n.t('navigation.highScores')}
+          </Text>
+        ),
         tabBarIcon: ({ horizontal, tintColor }) =>
           <Icon name="chart-bar" size={horizontal ? 20 : 25} color={tintColor} />
       }
@@ -39,6 +51,11 @@ const AppNavigator = createBottomTabNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
+        tabBarLabel: ({ tintColor }) => (
+          <Text style={{ fontSize: 10, color: tintColor }}>
+            {i18n.t('navigation.settings')}
+          </Text>
+        ),
         tabBarIcon: ({ horizontal, tintColor }) =>
           <Icon name="cogs" size={horizontal ? 20 : 25} color={tintColor} />
       }
