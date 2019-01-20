@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
+import i18n from '../i18n';
 import styles from '../styles';
 import {
   fetchHighScores,
@@ -41,14 +42,14 @@ export default class ResultsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={styles.welcome}>Results</Text>
+          <Text style={styles.welcome}>{i18n.t('results.title')}</Text>
           <Text style={styles.results}>
-            Words count: {this.state.totalWords}
+            {i18n.t('results.words_count')}: {this.state.totalWords}
           </Text>
           <HighScores data={this.state.highScores} />
           <Button
             onPress={() => navigation.navigate('Practice')}
-            title="Practice Again"
+            title={i18n.t('results.practice_again')}
           />
         </View>
       </View>

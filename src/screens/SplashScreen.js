@@ -1,22 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import i18n from '../i18n';
+
+import { loadSettings } from '../storage/settingsStorage';
 
 class SplashScreen extends React.Component {
-  performTimeConsumingTask = async() => {
-    return new Promise((resolve) =>
-      setTimeout(
-        () => { resolve('result') },
-        2000
-      )
-    );
-  }
-
   async componentDidMount() {
-    // Preload data from an external API
-    // Preload data using AsyncStorage
-    const data = await this.performTimeConsumingTask();
+    const settings = await loadSettings();
 
-    if (data !== null) {
+    if (settings !== null) {
+      i18n.locale = settings.locale;
       this.props.navigation.navigate('App');
     }
   }

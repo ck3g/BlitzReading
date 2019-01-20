@@ -10,6 +10,7 @@ import {
   View
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import i18n from '../i18n';
 
 import LanguageSelectorScreen from './LanguageSelectorScreen';
 import AboutScreen from './AboutScreen';
@@ -27,7 +28,7 @@ class SettingsScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Settings'
+    title: i18n.t('navigation.settings')
   };
 
   async componentDidMount() {
@@ -39,6 +40,7 @@ class SettingsScreen extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const locale = this.props.navigation.getParam('locale', null);
     if (locale && prevState.locale !== locale) {
+      i18n.locale = locale;
       this.setState({ locale });
     }
   }
@@ -61,7 +63,7 @@ class SettingsScreen extends React.Component {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}
-              placeholder="Your name"
+              placeholder={i18n.t('settings.name_placeholder')}
               maxLength={20}
               onBlur={Keyboard.dismiss}
               value={this.state.name}
@@ -78,7 +80,9 @@ class SettingsScreen extends React.Component {
               style={styles.saveButton}
               onPress={this.handleSubmit}
             >
-              <Text style={styles.saveButtonText}>Save</Text>
+              <Text style={styles.saveButtonText}>
+                {i18n.t('settings.save_button')}
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

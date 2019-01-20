@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import styles from '../styles';
+import i18n from '../i18n';
 
 class AboutScreen extends React.Component {
   static navigationOptions = {
-    title: 'About'
+    title: i18n.t('settings.about')
   };
 
   render() {
