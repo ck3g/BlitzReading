@@ -1,0 +1,12 @@
+{
+  "appName": "Blitzlesen",
+  "navigation": {
+    "home": "Startseite",
+    "highScores": "Highscores",
+    "settings": "Einstellungen"
+  },
+  "home": {
+    "welcome": "Willkommen im %{appName}!",
+    "start_practice": "Trainieren"
+  }
+}

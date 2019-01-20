@@ -1,0 +1,12 @@
+{
+  "appName": "Blitz Reading",
+  "navigation": {
+    "home": "Home",
+    "highScores": "High Scores",
+    "settings": "Settings"
+  },
+  "home": {
+    "welcome": "Welcome to %{appName}!",
+    "start_practice": "Practice"
+  }
+}
