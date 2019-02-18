@@ -5,16 +5,17 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   word: {
     fontSize: 50,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   results: {
     textAlign: 'center',
