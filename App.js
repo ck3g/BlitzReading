@@ -6,6 +6,9 @@ import {
   createAppContainer
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './src/reducers';
 
 import i18n from './src/i18n';
 
@@ -74,4 +77,16 @@ const InitialNavigator = createSwitchNavigator({
   App: AppNavigator
 });
 
-export default createAppContainer(InitialNavigator);
+const AppContainer = createAppContainer(InitialNavigator);
+
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={createStore(reducers)}>
+        <AppContainer />
+      </Provider>
+    );
+  }
+}
+
+export default App;
