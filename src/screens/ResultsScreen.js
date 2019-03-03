@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { updateHighScores } from '../actions';
+
 import i18n from '../i18n';
 import styles from '../styles';
 import {
@@ -9,7 +12,7 @@ import {
 } from '../storage/highScoreStorage';
 import HighScores from '../components/HighScores';
 
-export default class ResultsScreen extends React.Component {
+class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +37,7 @@ export default class ResultsScreen extends React.Component {
     const totalWords = this.props.navigation.getParam('totalWords', 0);
     this.setState({ totalWords });
 
+    this.props.updateHighScores([{ score: totalWords, createdAt: new Date() }]);
     this.updateHighScores(totalWords);
   }
 
@@ -46,7 +50,7 @@ export default class ResultsScreen extends React.Component {
           <Text style={styles.results}>
             {i18n.t('results.words_count')}: {this.state.totalWords}
           </Text>
-          <HighScores data={this.state.highScores} />
+          <HighScores data={this.props.highScores} />
           <Button
             onPress={() => navigation.navigate('Practice')}
             title={i18n.t('results.practice_again')}
@@ -56,3 +60,11 @@ export default class ResultsScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ highScores }) => ({
+  highScores
+});
+
+const mapDispachToProps = ({ updateHighScores });
+
+export default connect(mapStateToProps, mapDispachToProps)(ResultsScreen);
