@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { updateHighScores } from '../actions';
+import { Button } from '../components/common';
 
 import i18n from '../i18n';
 import styles from '../styles';
@@ -51,10 +52,9 @@ class ResultsScreen extends React.Component {
             {i18n.t('results.words_count')}: {this.state.totalWords}
           </Text>
           <HighScores data={this.props.highScores} />
-          <Button
-            onPress={() => navigation.navigate('Practice')}
-            title={i18n.t('results.practice_again')}
-          />
+          <Button onPress={() => navigation.navigate('Practice')}>
+            {i18n.t('results.practice_again')}
+          </Button>
         </View>
       </View>
     );

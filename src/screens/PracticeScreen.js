@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from '../styles';
+import { Button } from '../components/common';
 
 import i18n from '../i18n';
 
@@ -54,10 +55,9 @@ export default class PracticeScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <Text style={styles.word}>{this.state.currentWord}</Text>
-          <Button
-            onPress={this.onPressNextWord}
-            title={i18n.t("practice.next_word")}
-          />
+          <Button onPress={this.onPressNextWord} >
+            {i18n.t("practice.next_word")}
+          </Button>
         </View>
       </View>
     );

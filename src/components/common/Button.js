@@ -1,17 +1,22 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 const Button = ({ onPress, children }) => {
-  const { buttonStyle, textStyle } = styles;
+  const { buttonContainerStyle, buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress}>
-      <Text style={textStyle}>{children}</Text>
-    </TouchableOpacity>
+    <View style={buttonContainerStyle}>
+      <TouchableOpacity style={buttonStyle} onPress={onPress}>
+        <Text style={textStyle}>{children}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = {
+  buttonContainerStyle: {
+    height: 50
+  },
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
