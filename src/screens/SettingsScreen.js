@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Button,
   Keyboard,
   StyleSheet,
   ScrollView,
@@ -11,6 +10,7 @@ import {
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import i18n from '../i18n';
+import { Button } from '../components/common';
 
 import LanguageSelectorScreen from './LanguageSelectorScreen';
 import AboutScreen from './AboutScreen';
@@ -59,7 +59,7 @@ class SettingsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView style={{ flex: 1, flexDirection: 'column' }}>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}
@@ -75,15 +75,10 @@ class SettingsScreen extends React.Component {
               onPressItem={(screen) => navigation.navigate(screen, { currentLocale })}
             />
           </View>
-          <View style={styles.inputContainer}>
-            <TouchableOpacity
-              style={styles.saveButton}
-              onPress={this.handleSubmit}
-            >
-              <Text style={styles.saveButtonText}>
-                {i18n.t('settings.save_button')}
-              </Text>
-            </TouchableOpacity>
+          <View style={[styles.inputContainer, { flex: 1, justifyContent: 'flex-end' }]}>
+            <Button onPress={this.handleSubmit}>
+              {i18n.t('settings.save_button')}
+            </Button>
           </View>
         </ScrollView>
       </View>
@@ -100,7 +95,7 @@ const SettingsNavigator = createStackNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 45,
+    paddingTop: 45
   },
   inputContainer: {
     paddingTop: 15
@@ -113,18 +108,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     paddingLeft: 20,
     paddingRight: 20
-  },
-  saveButton: {
-    borderWidth: 1,
-    borderColor: '#007BFF',
-    backgroundColor: '#007BFF',
-    padding: 15,
-    margin: 5
-  },
-  saveButtonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center'
   }
 });
 

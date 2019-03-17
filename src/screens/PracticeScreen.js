@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
-import styles from '../styles';
+import { View, Text } from 'react-native';
+import { Button } from '../components/common';
 
 import i18n from '../i18n';
 
@@ -10,7 +10,7 @@ import shuffle from '../shuffle';
 
 const PRACTICE_TIME = 5 * 1000;
 
-export default class PracticeScreen extends React.Component {
+class PracticeScreen extends React.Component {
   constructor(props) {
     super(props)
 
@@ -52,14 +52,43 @@ export default class PracticeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.wordContainer}>
           <Text style={styles.word}>{this.state.currentWord}</Text>
-          <Button
-            onPress={this.onPressNextWord}
-            title={i18n.t("practice.next_word")}
-          />
+        </View>
+        <View style={styles.nextButtonContainer}>
+          <Button onPress={this.onPressNextWord} >
+            {i18n.t("practice.next_word")}
+          </Button>
         </View>
       </View>
     );
   }
 }
+
+const styles = {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  wordContainer: {
+    heigh: 50,
+    marginTop: 'auto',
+    paddingTop: 50,
+    alignSelf: 'center',
+    width: '95%'
+  },
+  word: {
+    marginBottom: 30,
+    fontSize: 50,
+    textAlign: 'center',
+    margin: 10
+  },
+  nextButtonContainer: {
+    marginTop: 'auto',
+    width: '95%',
+    marginBottom: 30
+  }
+};
+
+export default PracticeScreen;
