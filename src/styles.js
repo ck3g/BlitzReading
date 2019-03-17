@@ -12,11 +12,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     margin: 10
   },
-  word: {
-    fontSize: 50,
-    textAlign: 'center',
-    margin: 10
-  },
   results: {
     textAlign: 'center',
     color: '#333333',
