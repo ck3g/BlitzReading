@@ -7,3 +7,7 @@ The development process is described in the ["What did I learn" blog](http://wha
 ## Example
 
 ![App Example](app-example.gif)
+
+## License
+
+[MIT](LICENSE)
