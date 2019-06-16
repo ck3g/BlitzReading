@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
 import { Button } from '../components/common';
 
 import i18n from '../i18n';
@@ -14,13 +15,33 @@ class PracticeScreen extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { totalWords: 0 }
+    this.state = { totalWords: 0, timerId: null }
 
     this.onPressNextWord = this.onPressNextWord.bind(this);
   }
 
   componentDidMount() {
-    setTimeout(() => (
+    this.startPracticeSession();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { timerId } = this.state;
+    const { isFocused } = this.props;
+    const wasFocused = prevProps.isFocused;
+    const screenLostFocus = wasFocused && !isFocused && timerId;
+    const screenGotFocus = !wasFocused && isFocused && !timerId;
+
+    if (screenLostFocus) {
+      this.resetTimer(timerId);
+    }
+
+    if (screenGotFocus) {
+      this.startPracticeSession();
+    }
+  }
+
+  startPracticeSession() {
+    const timerId = setTimeout(() => (
       this.props.navigation.navigate('Results', {
         totalWords: this.state.totalWords
       })
@@ -34,8 +55,14 @@ class PracticeScreen extends React.Component {
     this.setState({
       currentWord,
       words,
-      totalWords: 0
+      totalWords: 0,
+      timerId
     });
+  }
+
+  resetTimer(timerId) {
+    clearTimeout(timerId);
+    this.setState({ timerId: null });
   }
 
   onPressNextWord() {
@@ -91,4 +118,4 @@ const styles = {
   }
 };
 
-export default PracticeScreen;
+export default withNavigationFocus(PracticeScreen);
