@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/Feather';
 import { updateHighScores } from '../actions';
 import { Button } from '../components/common';
 
@@ -53,7 +54,7 @@ class ResultsScreen extends React.Component {
           </Text>
           <HighScores data={this.props.highScores} />
           <Button onPress={() => navigation.navigate('Practice')}>
-            {i18n.t('results.practice_again')}
+            <Icon name="play" size={22} />
           </Button>
         </View>
       </View>

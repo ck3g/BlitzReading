@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Feather';
 import { Button } from '../components/common';
 
 import i18n from '../i18n';
@@ -84,7 +85,7 @@ class PracticeScreen extends React.Component {
         </View>
         <View style={styles.nextButtonContainer}>
           <Button onPress={this.onPressNextWord} >
-            {i18n.t("practice.next_word")}
+            <Icon name="fast-forward" size={22} />
           </Button>
         </View>
       </View>

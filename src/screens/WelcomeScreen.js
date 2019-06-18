@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 import i18n from '../i18n';
 import { Button } from '../components/common';
 
@@ -14,7 +15,7 @@ class WelcomeScreen extends React.Component {
         </View>
         <View style={styles.practiceButtonContainer}>
           <Button onPress={() => this.props.navigation.navigate('Practice')}>
-            {i18n.t('home.start_practice')}
+            <Icon name="play" size={22} />
           </Button>
         </View>
       </View>

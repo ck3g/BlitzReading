@@ -6,16 +6,11 @@
     "settings": "Einstellungen"
   },
   "home": {
-    "welcome": "Willkommen im %{appName}!",
-    "start_practice": "Trainieren"
-  },
-  "practice": {
-    "next_word": "Weiter"
+    "welcome": "Willkommen im %{appName}!"
   },
   "results": {
     "title": "Ergebnisse",
-    "words_count": "Wörter",
-    "practice_again": "Nochmal üben"
+    "words_count": "Wörter"
   },
   "high_scores": {
     "title": "Highscores"

@@ -6,16 +6,11 @@
     "settings": "Settings"
   },
   "home": {
-    "welcome": "Welcome to %{appName}!",
-    "start_practice": "Practice"
-  },
-  "practice": {
-    "next_word": "Next"
+    "welcome": "Welcome to %{appName}!"
   },
   "results": {
     "title": "Results",
-    "words_count": "Words count",
-    "practice_again": "Practice again"
+    "words_count": "Words count"
   },
   "high_scores": {
     "title": "High Scores"
